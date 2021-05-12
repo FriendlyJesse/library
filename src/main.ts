@@ -1,5 +1,5 @@
 // src/main.js
-import foo from './foo.js'
+import foo from './foo'
 import { version } from '../package.json'
 
 export default function () {

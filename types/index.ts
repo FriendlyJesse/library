@@ -1,0 +1,7 @@
+interface EventBus {
+
+}
+
+export {
+  EventBus
+}
