@@ -1,7 +1,9 @@
-import { version } from '../package.json'
+// import { version } from '../package.json'
 
-export * from './core/eventBus'
+import * as ab from './core/ab'
+import eventBus from './core/eventBus'
 
-// export default function () {
-//   console.log(version)
-// }
+export default {
+  eventBus,
+  ab
+}
