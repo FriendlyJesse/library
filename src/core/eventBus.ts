@@ -2,9 +2,10 @@
  * 订阅发布类
  * @author Jesse <jessexinyu@foxmail.com>
  */
+import { Event } from '../../types'
 
 class EventBus {
-  event = {}
+  event: Event = {}
 
   /**
   * 订阅事件
@@ -22,7 +23,7 @@ class EventBus {
   * @param {string} name - 事件名
   * @param {args} args - 参数
   */
-  public emit (name, ...args) {
+  public emit <T> (name: string, ...args: T[]) {
     // 遍历要触发的事件对应的数组回调函数。依次调用数组当中的函数，并把参数传入每一个cb。
     this.event[name] && this.event[name].forEach(fn => {
       fn(...args)
@@ -34,8 +35,9 @@ class EventBus {
   * @param {string} name - 事件名
   * @param {function} callback - 回调
   */
-  public once (name: string, callback: Function) {
-    const cb = (...args) => {
+  public once <T> (name: string, callback: (...args: T[]) => void) {
+    const cb = (...args: T[]) => {
+      // eslint-disable-next-line node/no-callback-literal
       callback(...args)
       this.off(name, callback)
     }

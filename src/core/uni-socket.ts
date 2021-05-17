@@ -1,5 +1,14 @@
 import EventBus from './eventBus'
-import { json2params } from './tools'
+import { json2params } from './json'
+
+import { uni } from '../../global'
+
+interface Options {
+  reconnectMax?: number
+  reconnectTime?: number
+  heartTimeout?: number
+  logger?: Boolean
+}
 
 /**
  * Socket 类
@@ -7,15 +16,15 @@ import { json2params } from './tools'
  * @extends EventBus
  */
 class Socket extends EventBus {
-  instance = null
+  instance: any = null
   status = 'unconnected' // unconnected, connecting, connected, failed, closed, turnoff(主动关闭)
 
   // options
   reconnectMax = 10
   reconnectCount = 0
   reconnectTime = 3000
-  heartbeat = null // 心跳
-  heartbeatShut = null // 断线
+  heartbeat: any = null // 心跳
+  heartbeatShut: any = null // 断线
   heartTimeout = 60000 // 心跳间隔
   logger = true
 
@@ -34,17 +43,17 @@ class Socket extends EventBus {
    * @param {number} [options.heartTimeout = 60000] - 心跳间隔
    * @param {boolean} [options.logger = true] - 是否开启日志
    */
-  constructor (url, params, options) {
+  constructor (url: string, params: Object, options: Options) {
     super()
 
     this.url = url
     this.params = params
 
     for (const key in options) { // 可配置化
-      if (key in this) this[key] = options[key]
+      if (key in this) (this as any)[key] = options[key as keyof Options]
     }
 
-    this.init(url, params)
+    this.init()
   }
 
   /**
@@ -54,7 +63,7 @@ class Socket extends EventBus {
    * @param {Function=} fail - 接口调用失败的回调函数
    * @param {Function=} complete - 接口调用结束的回调函数（调用成功、失败都会执行）
    */
-  send (data, ...handlers) {
+  send <T> (data: Object | ArrayBuffer, ...handlers: T[]) {
     this.logger && data !== 'ping' && console.log('send: ', data)
     this.instance.send({
       data,
@@ -105,7 +114,7 @@ class Socket extends EventBus {
     this.heartbeatCheck()
   }
 
-  onClose (e) {
+  onClose () {
     if (this.status !== 'turnoff') this.status = 'closed'
     this.complete()
     this.reconnect()
@@ -116,7 +125,7 @@ class Socket extends EventBus {
   //   this.status = 'error'
   // }
 
-  onMessage (message) {
+  onMessage (message: any) {
     // 收到任何消息都表示没有断开
     this.heartbeatReset()
     this.heartbeatCheck()

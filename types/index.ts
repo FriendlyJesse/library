@@ -1,7 +1,7 @@
-interface EventBus {
-
+interface Event {
+  [name: string]: Function[]
 }
 
 export {
-  EventBus
+  Event
 }

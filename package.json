@@ -1,15 +1,19 @@
 {
   "name": "utils",
   "version": "1.0.0",
-  "description": "",
+  "description": "Jesse 的函数库",
   "main": "index.js",
+  "types": "./types",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "rollup -w -c",
     "build": "rollup -c",
     "lint": "eslint ./src/**/*.{js,ts} --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": ["tools", "utils"],
   "author": "",
   "license": "ISC",
   "dependencies": {},

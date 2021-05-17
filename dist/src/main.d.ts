@@ -1,1 +1,1 @@
-export default function (): void;
+export * from './core/eventBus';
