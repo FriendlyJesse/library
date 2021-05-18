@@ -1,11 +1,11 @@
 {
   "name": "utils",
   "version": "1.0.0",
-  "description": "Jesse 的函数库",
+  "description": "rollup + typescript 制作的工具函数函数库",
   "main": "dist/bundle.umd.js",
   "module": "dist/bundle.esm.js",
   "sideEffects": false,
-  "types": "./types",
+  "types": "./typings",
   "files": [
     "dist"
   ],
@@ -18,12 +18,19 @@
   },
   "keywords": [
     "tools",
-    "utils"
+    "utils",
+    "函数库",
+    "uniapp",
+    "uniapp utils",
+    "uniapp 函数库",
+    "js 函数库",
+    "ts 函数库"
   ],
   "author": "",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
+    "@dcloudio/types": "^2.2.4",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
     "eslint": "^7.26.0",

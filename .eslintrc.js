@@ -14,6 +14,9 @@ module.exports = {
   plugins: [
     '@typescript-eslint'
   ],
+  globals: {
+    uni: true
+  },
   rules: {
   }
 }

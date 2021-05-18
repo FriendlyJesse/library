@@ -10,13 +10,15 @@
     "moduleResolution": "Node",
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
+    "types": ["@dcloudio/types"]
   },
   "typedocOptions": {
     "entryPoints": ["src/main.ts"],
     "out": "docs"
   },
   "include": [
-    "src"
+    "src",
+    "typings/index.d.ts"  
   ]
 }

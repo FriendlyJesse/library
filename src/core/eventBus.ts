@@ -3,7 +3,7 @@
  *
  * @author Jesse <jessexinyu@foxmail.com>
  */
-import { Event } from '../../types'
+import { Event } from '../../typings'
 
 class EventBus {
   /**

@@ -1,14 +1,7 @@
 import EventBus from './eventBus'
 import { json2params } from './json'
 
-import { uni } from '../../global'
-
-interface Options {
-  reconnectMax?: number
-  reconnectTime?: number
-  heartTimeout?: number
-  logger?: Boolean
-}
+import { Options } from '../../typings'
 
 /**
  * Socket 类
