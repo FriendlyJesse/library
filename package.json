@@ -2,7 +2,9 @@
   "name": "utils",
   "version": "1.0.0",
   "description": "Jesse 的函数库",
-  "main": "index.js",
+  "main": "dist/bundle.umd.js",
+  "module": "dist/bundle.esm.js",
+  "sideEffects": false,
   "types": "./types",
   "files": [
     "dist"

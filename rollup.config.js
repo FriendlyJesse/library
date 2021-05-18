@@ -3,13 +3,21 @@ import resolve from 'rollup-plugin-node-resolve'
 import typescript from 'rollup-plugin-typescript2'
 
 export default {
-  input: 'src/main.ts',
-  output: {
-    format: 'es',
-    file: 'dist/bundle.js',
-    name: 'utils',
-    sourcemap: true
-  },
+  input: 'src/index.ts',
+  output: [
+    {
+      name: 'utils',
+      file: 'dist/bundle.umd.js',
+      format: 'umd',
+      sourcemap: true
+    },
+    {
+      name: 'utils',
+      file: 'dist/bundle.esm.js',
+      format: 'esm',
+      sourcemap: true
+    }
+  ],
   plugins: [
     json(),
     resolve(),
