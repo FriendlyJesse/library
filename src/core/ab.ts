@@ -6,8 +6,8 @@
 
 /**
  * ArrayBuffer转为字符串，参数为ArrayBuffer对象
- * @param {arraybuffer} u - arraybuffer
- * @param {function} f - callback
+ * @param u - arraybuffer
+ * @param f - callback
  */
 function ab2str (u: ArrayBuffer, f: Function) {
   const b = new Blob([u])
@@ -19,8 +19,8 @@ function ab2str (u: ArrayBuffer, f: Function) {
 
 /**
  * 字符串转为ArrayBuffer对象，参数为字符串
- * @param {string} u - string
- * @param {function} f - callback
+ * @param u - string
+ * @param f - callback
  */
 function str2ab (s: string, f: Function) {
   const b = new Blob([s], { type: 'text/plain' })

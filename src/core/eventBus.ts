@@ -1,16 +1,20 @@
 /**
  * 订阅发布类
+ *
  * @author Jesse <jessexinyu@foxmail.com>
  */
 import { Event } from '../../types'
 
 class EventBus {
-  event: Event = {}
+  /**
+   * 订阅列表
+   */
+  private event: Event = {}
 
   /**
   * 订阅事件
-  * @param {string} name - 事件名
-  * @param {function} callback - 回调
+  * @param name - 事件名
+  * @param callback - 回调
   */
   public on (name: string, callback: Function) {
     // 一个事件可能有多个监听者

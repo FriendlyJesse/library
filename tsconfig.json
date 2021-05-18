@@ -3,8 +3,6 @@
     "target": "ESNext",
     "module": "ES2015",
     "declaration": true,
-    "outDir": "dist/lib",
-    "declarationDir": "dist/types",
     "strict": true,
     "esModuleInterop": true,
     "pretty": true,
