@@ -3,7 +3,7 @@
 import * as ab from './core/ab'
 import eventBus from './core/eventBus'
 
-export default {
+export {
   eventBus,
   ab
 }

@@ -3,12 +3,20 @@
     "target": "ESNext",
     "module": "ES2015",
     "declaration": true,
-    "outDir": "dist",
+    "outDir": "dist/lib",
+    "declarationDir": "dist/types",
     "strict": true,
     "esModuleInterop": true,
     "pretty": true,
     "resolveJsonModule": true,
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  },
+  "typedocOptions": {
+    "entryPoints": ["src/main.ts"],
+    "out": "docs"
   },
   "include": [
     "src"
