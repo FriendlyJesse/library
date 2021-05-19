@@ -14,7 +14,8 @@
     "types": ["@dcloudio/types"]
   },
   "typedocOptions": {
-    "entryPoints": ["src/main.ts"],
+    "name": "utils",
+    "entryPoints": ["src/index.ts"],
     "out": "docs"
   },
   "include": [

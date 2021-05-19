@@ -1,5 +1,5 @@
 import EventBus from './eventBus'
-import { json2params } from './json'
+import json2params from './json2params'
 
 import { Options } from '../../typings'
 
@@ -9,34 +9,33 @@ import { Options } from '../../typings'
  * @extends EventBus
  */
 class Socket extends EventBus {
-  instance: any = null
-  status = 'unconnected' // unconnected, connecting, connected, failed, closed, turnoff(主动关闭)
+  private instance: any = null
+  private status = 'unconnected' // unconnected, connecting, connected, failed, closed, turnoff(主动关闭)
+  private heartbeat: any = null // 心跳
+  private heartbeatShut: any = null // 断线
+  private url = ''
+  private params = {}
+  private reconnectCount = 0
 
   // options
-  reconnectMax = 10
-  reconnectCount = 0
-  reconnectTime = 3000
-  heartbeat: any = null // 心跳
-  heartbeatShut: any = null // 断线
-  heartTimeout = 60000 // 心跳间隔
-  logger = true
-
-  url = ''
-  params = {}
+  public reconnectMax = 10
+  public reconnectTime = 3000
+  public heartTimeout = 60000 // 心跳间隔
+  public logger = true
 
   /**
    * 创建一个 socket 实例
-   * @param {string} url - url
-   * @param {object} params - params
-   * @param {string} params.type - type
-   * @param {string} params.token - token
-   * @param {object=} options - 可配置项
+   * @param url - url
+   * @param params - params
+   * @param params.type - type
+   * @param params.token - token
+   * @param options - 可配置项
    * @param {number} [options.reconnectMax = 10] - 最大重连数
    * @param {number} [options.reconnectTime = 3000] - 重连间隔
    * @param {number} [options.heartTimeout = 60000] - 心跳间隔
    * @param {boolean} [options.logger = true] - 是否开启日志
    */
-  constructor (url: string, params: Object, options: Options) {
+  constructor (url: string, params: Object, options?: Options) {
     super()
 
     this.url = url
@@ -56,7 +55,7 @@ class Socket extends EventBus {
    * @param {Function=} fail - 接口调用失败的回调函数
    * @param {Function=} complete - 接口调用结束的回调函数（调用成功、失败都会执行）
    */
-  send <T> (data: Object | ArrayBuffer, ...handlers: T[]) {
+  public send <T> (data: Object | ArrayBuffer, ...handlers: T[]) {
     this.logger && data !== 'ping' && console.log('send: ', data)
     this.instance.send({
       data,
@@ -67,7 +66,7 @@ class Socket extends EventBus {
   /**
    * 主动关闭 socket
    */
-  shut () { // 主动关闭
+  public shut () { // 主动关闭
     this.instance.close({
       success: () => {
         this.status = 'turnoff'
@@ -75,7 +74,7 @@ class Socket extends EventBus {
     })
   }
 
-  init () {
+  private init () {
     // 不重复连接
     if (this.status === 'connecting' && 'connected') return
 
@@ -99,7 +98,7 @@ class Socket extends EventBus {
     this.instance.onMessage(this.onMessage.bind(this))
   }
 
-  onOpen () {
+  private onOpen () {
     this.status = 'connected'
     this.complete()
 
@@ -107,7 +106,7 @@ class Socket extends EventBus {
     this.heartbeatCheck()
   }
 
-  onClose () {
+  private onClose () {
     if (this.status !== 'turnoff') this.status = 'closed'
     this.complete()
     this.reconnect()
@@ -118,7 +117,7 @@ class Socket extends EventBus {
   //   this.status = 'error'
   // }
 
-  onMessage (message: any) {
+  private onMessage (message: any) {
     // 收到任何消息都表示没有断开
     this.heartbeatReset()
     this.heartbeatCheck()
@@ -131,7 +130,7 @@ class Socket extends EventBus {
     this.emit(content.type, data)
   }
 
-  reconnect () {
+  private reconnect () {
     this.logger && console.log('reconnect: ' + this.reconnectCount)
     // reconnectMax: 0 不重连, 重连次数超出不重连, status: trunoff 主动关闭不重连
     if (this.reconnectMax === 0 || this.reconnectCount >= this.reconnectMax || this.status === 'turnoff') return
@@ -141,7 +140,7 @@ class Socket extends EventBus {
     }, this.reconnectTime)
   }
 
-  heartbeatCheck () { // 心跳检测
+  private heartbeatCheck () { // 心跳检测
     this.heartbeat = setTimeout(() => {
       this.send('ping')
       this.heartbeatShut = setTimeout(() => {
@@ -151,12 +150,12 @@ class Socket extends EventBus {
     }, this.heartTimeout)
   }
 
-  heartbeatReset () { // 重置心跳状态
+  private heartbeatReset () { // 重置心跳状态
     clearTimeout(this.heartbeat)
     clearTimeout(this.heartbeatShut)
   }
 
-  complete () {
+  private complete () {
     this.logger && console.log(`------------------- ${this.status} -------------------`)
   }
 }

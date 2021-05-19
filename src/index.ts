@@ -2,12 +2,16 @@
 
 import eventBus from './core/eventBus'
 import uniSocket from './core/uni-socket'
-import * as ab from './core/ab'
-import * as json from './core/json'
+import str2ab from './core/str2ab'
+import ab2str from './core/ab2str'
+import getDeepJSON from './core/getDeepJSON'
+import json2params from './core/json2params'
 
 export {
   uniSocket,
   eventBus,
-  ab,
-  json
+  getDeepJSON,
+  json2params,
+  str2ab,
+  ab2str
 }
