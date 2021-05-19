@@ -16,7 +16,8 @@
   "typedocOptions": {
     "name": "utils",
     "entryPoints": ["src/index.ts"],
-    "out": "docs"
+    "out": "docs",
+    "includeVersion": true
   },
   "include": [
     "src",
