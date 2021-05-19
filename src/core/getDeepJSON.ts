@@ -1,6 +1,6 @@
 /**
  * 获取 json 的 keys 或 values
- * @category json 转换
+ * @category JSON
  * @param json - json
  * @param type - 'keys' / 'values'
  * @returns 获取的 keys 或 values

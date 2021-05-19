@@ -1,6 +1,6 @@
 /**
  * 字符串转为ArrayBuffer对象，参数为字符串
- * @category 二进制转换
+ * @category ArrayBuffer
  * @param u - string
  * @param f - callback
  */

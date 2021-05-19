@@ -1,6 +1,6 @@
 /**
  * json 转 params
- * @category json 转换
+ * @category JSON
  * @param json - json
  * @param slice - 分隔符
  * @returns 转换后的 json
