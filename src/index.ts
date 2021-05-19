@@ -3,6 +3,16 @@
 import eventBus from './core/eventBus'
 import uniSocket from './core/uni-socket'
 
+// Object
+import isEmptyObject from './core/isEmptyObject'
+
+// Array
+import arrayEqual from './core/arrayEqual'
+import arrayClassify from './core/arrayClassify'
+
+// Formatter
+import formatTime from './core/formatTime'
+
 // Arraybuffer
 import str2ab from './core/str2ab'
 import ab2str from './core/ab2str'
@@ -17,9 +27,28 @@ import isPhoneNum from './core/isPhoneNum'
 import isEmail from './core/isEmail'
 import isIdCard from './core/isIdCard'
 
+// OS
+import getExplore from './core/getExplore'
+import getOS from './core/getOS'
+
+// Coockie
+import getCookie from './core/getCookie'
+import setCookie from './core/setCookie'
+import removeCookie from './core/removeCookie'
+
 export {
   uniSocket,
   eventBus,
+
+  // Object
+  isEmptyObject,
+
+  // Array
+  arrayEqual,
+  arrayClassify,
+
+  // Formatter
+  formatTime,
 
   // Arraybuffer
   str2ab,
@@ -33,5 +62,14 @@ export {
   isUrl,
   isPhoneNum,
   isEmail,
-  isIdCard
+  isIdCard,
+
+  // OS
+  getExplore,
+  getOS,
+
+  // Cookie
+  getCookie,
+  setCookie,
+  removeCookie
 }
