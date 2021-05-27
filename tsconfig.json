@@ -20,7 +20,6 @@
     "includeVersion": true
   },
   "include": [
-    "src",
-    "typings/index.d.ts"  
+    "src" 
   ]
 }
