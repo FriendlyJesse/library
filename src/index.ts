@@ -1,6 +1,6 @@
 // import { version } from '../package.json'
 
-import eventBus from './core/eventBus'
+import EventBus from './core/EventBus'
 
 // Object
 import isEmptyObject from './core/isEmptyObject'
@@ -36,7 +36,7 @@ import setCookie from './core/setCookie'
 import removeCookie from './core/removeCookie'
 
 export {
-  eventBus as EventBus,
+  EventBus,
 
   // Object
   isEmptyObject,
