@@ -1,14 +1,16 @@
 {
   "name": "@friendlyjesse/library",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "rollup + typescript 制作的工具函数函数库",
   "main": "dist/bundle.umd.js",
   "module": "dist/bundle.esm.js",
+  "typings": "dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/FriendlyJesse/library.git"
   },
+  "homepage": "https://friendlyjesse.github.io/library",
   "files": [
     "dist"
   ],
@@ -17,6 +19,7 @@
     "build": "rollup -c",
     "lint": "eslint ./src/**/*.{js,ts} --fix",
     "docs": "typedoc",
+    "release": "bash deploy.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
