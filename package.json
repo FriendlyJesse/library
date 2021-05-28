@@ -1,6 +1,6 @@
 {
   "name": "@friendlyjesse/library",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "rollup + typescript 制作的工具函数函数库",
   "main": "dist/bundle.umd.js",
   "module": "dist/bundle.esm.js",
