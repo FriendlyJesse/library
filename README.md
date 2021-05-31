@@ -1,2 +1,2 @@
-# 个人工具库
-123456
+# 工具库
+文档地址：https://friendlyjesse.github.io/library
