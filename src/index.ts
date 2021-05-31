@@ -4,10 +4,12 @@ import EventBus from './core/EventBus'
 
 // Object
 import isEmptyObject from './core/isEmptyObject'
+import deepClone from './core/deepClone'
 
 // Array
 import arrayEqual from './core/arrayEqual'
 import arrayClassify from './core/arrayClassify'
+import isArray from './core/isArray'
 
 // Formatter
 import formatTime from './core/formatTime'
@@ -40,10 +42,12 @@ export {
 
   // Object
   isEmptyObject,
+  deepClone,
 
   // Array
   arrayEqual,
   arrayClassify,
+  isArray,
 
   // Formatter
   formatTime,
