@@ -10,7 +10,13 @@ interface Options {
   logger?: Boolean
 }
 
+interface getUrlResolveReturn {
+  path: string,
+  params: string
+}
+
 export {
   Event,
-  Options
+  Options,
+  getUrlResolveReturn
 }

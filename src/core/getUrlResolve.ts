@@ -1,10 +1,12 @@
+import { getUrlResolveReturn } from '../../typings'
+
 /**
  * 获取 url 的 path 和 params
  * @param url
  * @returns path 和 params
  */
-function getUrlResolve (url: string): Object {
-  let path
+function getUrlResolve (url: string): getUrlResolveReturn {
+  let path = ''
   const params: any = {}
   if (url.indexOf('?') > -1) {
     const str = url.split('?')
