@@ -21,6 +21,7 @@ import ab2str from './core/ab2str'
 // JSON
 import getDeepJSON from './core/getDeepJSON'
 import json2params from './core/json2params'
+import getUrlResolve from './core/getUrlResolve'
 
 // Validate
 import isUrl from './core/isUrl'
@@ -59,6 +60,7 @@ export {
   // JSON
   getDeepJSON,
   json2params,
+  getUrlResolve,
 
   // Validate
   isUrl,
