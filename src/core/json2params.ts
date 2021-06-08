@@ -1,3 +1,5 @@
+import isObject from '../core/isObject'
+
 /**
  * json 转 params
  * @category JSON
@@ -7,7 +9,7 @@
  */
 function json2params (json: any, slice = '&') : string {
   return Object.keys(json).reduce((acc, item) => {
-    return String(acc) + item + '=' + json[item] + slice
+    return String(acc) + encodeURIComponent(item) + '=' + encodeURIComponent(isObject(json[item]) ? JSON.stringify(json[item]) : json[item]) + slice
   }, '').slice(0, -1)
 }
 

@@ -5,6 +5,7 @@ import EventBus from './core/EventBus'
 // Object
 import isEmptyObject from './core/isEmptyObject'
 import deepClone from './core/deepClone'
+import isObject from './core/isObject'
 
 // Array
 import arrayEqual from './core/arrayEqual'
@@ -44,6 +45,7 @@ export {
   // Object
   isEmptyObject,
   deepClone,
+  isObject,
 
   // Array
   arrayEqual,
